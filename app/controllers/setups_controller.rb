@@ -6,7 +6,6 @@ class SetupsController < ApplicationController
   def show
     @setup = Setup.find(params[:id])
     @assumptions = @setup.assumptions
-    @assumption = Setup.new
   end
 
   def new

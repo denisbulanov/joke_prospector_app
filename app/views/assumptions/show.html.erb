@@ -1,21 +1,21 @@
 <div class="page-header">
-  <h3>Assumption #<%= @assumption.id %></h3>
+  <h3><%= @assumption.body %></h3>
 </div>
+
 
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
+      <dt>Body</dt>
+      <dd><%= @assumption.body %></dd>
       <dt>Connector</dt>
       <dd><%= @assumption.connector %></dd>
 
-      <dt>Body</dt>
-      <dd><%= @assumption.body %></dd>
 
       <dt>Setup</dt>
       <dd><%= @assumption.setup_id %></dd>
 
     </dl>
-
     <div class="btn-group btn-group-justified">
       <a href="/assumptions" class="btn btn-primary">
         Back
@@ -27,5 +27,51 @@
         Delete
       </a>
     </div>
+
+    <% @reinterpretations.each do |reinterpretation| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= reinterpretation.body %></div>
+      <div class="panel-body">
+        <a href="/reinterpretations/<%= reinterpretation.id %>" class="btn btn-default btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+        <a href="/reinterpretations/<%= reinterpretation.id %>/edit" class="btn btn-default btn-sm"><i class="fa fa-edit fa-fw"></i></a>
+        <a href="/delete_reinterpretation/<%= reinterpretation.id %>" class="btn btn-default btn-sm" rel="nofollow"><i class="fa fa-trash-o fa-fw"></i></a>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Create a new reinterpretation
+          </h3>
+        </div>
+        <div class="panel-body">
+          <form action="/create_reinterpretation" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for body -->
+            <div class="form-group">
+              <label for="body" class="control-label">
+                Body
+              </label>
+
+              <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"></textarea>
+            </div>
+
+            <input type="hidden" id="assumption_id" name="assumption_id" placeholder="Setup" class="form-control" value="<%= @assumption.id %>">
+
+            <button class="btn btn-success btn-block">
+              Create Reinterpretation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div>
 </div>

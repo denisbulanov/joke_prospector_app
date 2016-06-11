@@ -18,7 +18,7 @@ class ReinterpretationsController < ApplicationController
     @reinterpretation.body = params[:body]
 
     if @reinterpretation.save
-      redirect_to "/reinterpretations", :notice => "Reinterpretation created successfully."
+      redirect_to :back, :notice => "Reinterpretation created successfully."
     else
       render 'new'
     end
@@ -36,7 +36,7 @@ class ReinterpretationsController < ApplicationController
     @reinterpretation.body = params[:body]
 
     if @reinterpretation.save
-      redirect_to "/reinterpretations", :notice => "Reinterpretation updated successfully."
+      redirect_to :back, :notice => "Reinterpretation updated successfully."
     else
       render 'edit'
     end
@@ -47,6 +47,6 @@ class ReinterpretationsController < ApplicationController
 
     @reinterpretation.destroy
 
-    redirect_to "/reinterpretations", :notice => "Reinterpretation deleted."
+    redirect_to :back, :notice => "Reinterpretation deleted."
   end
 end

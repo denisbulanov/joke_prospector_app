@@ -5,6 +5,7 @@ class AssumptionsController < ApplicationController
 
   def show
     @assumption = Assumption.find(params[:id])
+    @reinterpretations = @assumption.reinterpretations
   end
 
   def new
@@ -36,7 +37,7 @@ class AssumptionsController < ApplicationController
     @assumption.setup_id = params[:setup_id]
 
     if @assumption.save
-      redirect_to "/setups", :notice => "Assumption updated successfully."
+      redirect_to :back, :notice => "Assumption updated successfully."
     else
       render 'edit'
     end
@@ -47,6 +48,6 @@ class AssumptionsController < ApplicationController
 
     @assumption.destroy
 
-    redirect_to "/assumptions", :notice => "Assumption deleted."
+    redirect_to :back, :notice => "Assumption deleted."
   end
 end
