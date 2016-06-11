@@ -18,7 +18,7 @@ class SecondstoriesController < ApplicationController
     @secondstory.reinterpretation_id = params[:reinterpretation_id]
 
     if @secondstory.save
-      redirect_to "/secondstories", :notice => "Secondstory created successfully."
+      redirect_to :back, :notice => "Secondstory created successfully."
     else
       render 'new'
     end
@@ -36,7 +36,7 @@ class SecondstoriesController < ApplicationController
     @secondstory.reinterpretation_id = params[:reinterpretation_id]
 
     if @secondstory.save
-      redirect_to "/secondstories", :notice => "Secondstory updated successfully."
+      redirect_to :back, :notice => "Secondstory updated successfully."
     else
       render 'edit'
     end
@@ -47,6 +47,6 @@ class SecondstoriesController < ApplicationController
 
     @secondstory.destroy
 
-    redirect_to "/secondstories", :notice => "Secondstory deleted."
+    redirect_to :back, :notice => "Secondstory deleted."
   end
 end

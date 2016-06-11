@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Reinterpretation #<%= @reinterpretation.id %></h3>
+  <h3><%= @reinterpretation.body %></h3>
 </div>
 
 <div class="row">
@@ -27,5 +27,71 @@
         Delete
       </a>
     </div>
+
+    <% @secondstories.each do |secondstory| %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= secondstory.body %></div>
+      <div class="panel-body">
+        <p>
+          <%= secondstory.punch_line %>
+        </p>
+        <a href="/secondstories/<%= secondstory.id %>" class="btn btn-default btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+        <a href="/secondstories/<%= secondstory.id %>/edit" class="btn btn-default btn-sm"><i class="fa fa-edit fa-fw"></i></a>
+        <a href="/delete_secondstories/<%= secondstory.id %>" class="btn btn-default btn-sm" rel="nofollow"><i class="fa fa-trash-o fa-fw"></i></a>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Create a new second story
+          </h3>
+        </div>
+        <div class="panel-body">
+          <form action="/create_secondstory" method="post">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for body -->
+            <div class="form-group">
+              <label for="body" class="control-label">
+                Body
+              </label>
+
+              <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"></textarea>
+
+              <div class="form-group">
+                <label for="punch_line" class="control-label">
+                  Punch Line
+                </label>
+
+                <textarea id="punch_line" name="punch_line" placeholder="Punch Line" class="form-control" rows="1"></textarea>
+              </div>
+
+
+
+            </div>
+
+            <input type="hidden" id="reinterpretation_id" name="reinterpretation_id" placeholder="Reinterpretation" class="form-control" value="<%= @reinterpretation.id %>">
+
+            <button class="btn btn-default btn-sm">
+              Create a new story and a punch line
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+
   </div>
 </div>

@@ -5,6 +5,7 @@ class ReinterpretationsController < ApplicationController
 
   def show
     @reinterpretation = Reinterpretation.find(params[:id])
+    @secondstories = @reinterpretation.secondstories
   end
 
   def new

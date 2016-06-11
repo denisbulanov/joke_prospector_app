@@ -17,9 +17,9 @@
       <tr>
         <td><%= setup.body %></td>
         <td>
-          <a href="/setups/<%= setup.id %>" class="btn btn-primary">Show</a>
-          <a href="/setups/<%= setup.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_setup/<%= setup.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/setups/<%= setup.id %>" class="btn btn-default btn-sm"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+          <a href="/setups/<%= setup.id %>/edit" class="btn btn-default btn-sm"><i class="fa fa-edit fa-fw"></i></a>
+          <a href="/delete_setup/<%= setup.id %>" class="btn btn-default btn-sm" rel="nofollow"><i class="fa fa-trash-o fa-fw"></i></a>
         </td>
       </tr>
       <% end %>
